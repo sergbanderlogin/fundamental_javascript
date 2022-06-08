@@ -1,5 +1,4 @@
 import api from "../services/apiService";
-
 class Locations {
   constructor(api) {
     this.api = api;
@@ -66,5 +65,4 @@ export default locations;
 // { 'city, country': null }
 // [{}, {}]
 // { 'city': {...}} => cities[code]
-//
 //
