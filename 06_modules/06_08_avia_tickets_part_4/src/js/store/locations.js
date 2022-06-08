@@ -67,3 +67,4 @@ export default locations;
 // [{}, {}]
 // { 'city': {...}} => cities[code]
 //
+//
