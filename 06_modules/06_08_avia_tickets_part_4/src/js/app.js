@@ -1,15 +1,15 @@
-import '../css/style.css';
-import './plugins';
-import locations from './store/locations';
-import formUI from './views/form';
-import currencyUI from './views/currency';
+import "../css/style.css";
+import "./plugins";
+import locations from "./store/locations";
+import formUI from "./views/form";
+import currencyUI from "./views/currency";
 
-document.addEventListener('DOMContentLoaded', e => {
+document.addEventListener("DOMContentLoaded", (e) => {
   const form = formUI.form;
 
   // Events
   initApp();
-  form.addEventListener('submit', e => {
+  form.addEventListener("submit", (e) => {
     e.preventDefault();
     onFormSubmit();
   });

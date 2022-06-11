@@ -29,8 +29,6 @@
   },
   "dependencies": {
     "axios": "^0.27.2",
-    "install": "^0.13.0",
-    "materialize-css": "^1.0.0-rc.2",
-    "npm": "^8.12.1"
+    "materialize-css": "^1.0.0-rc.2"
   }
 }
