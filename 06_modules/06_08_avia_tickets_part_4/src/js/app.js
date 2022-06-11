@@ -1,31 +1,40 @@
-import "../css/style.css";
-import "./plugins";
-import locations from "./store/locations";
-import formUI from "./views/form";
+import '../css/style.css';
+import './plugins';
+import locations from './store/locations';
+import formUI from './views/form';
+import currencyUI from './views/currency';
 
-document.addEventListener("DOMConterntLoaded", () => {
-  initApp();
+document.addEventListener('DOMContentLoaded', e => {
   const form = formUI.form;
 
   // Events
-  form.addEventListener("submit", (e) => {
+  initApp();
+  form.addEventListener('submit', e => {
     e.preventDefault();
     onFormSubmit();
   });
 
-  // Hendlers
+  // handlers
   async function initApp() {
     await locations.init();
-    formUI.setAutocompleteData(locations.shortCitiesList);
+    formUI.setAutocompleteData(locations.shortCities);
   }
 
   async function onFormSubmit() {
-    // зібрати дані з input
-    const origin = formUI.originValue;
-    const destination = formUI.destinationValue;
+    const origin = locations.getCityCodeByKey(formUI.originValue);
+    const destination = locations.getCityCodeByKey(formUI.destinationValue);
     const depart_date = formUI.departDateValue;
     const return_date = formUI.returnDateValue;
+    const currency = currencyUI.currecyValue;
 
-    console.log(origin, destination, depart_date, return_date);
+    await locations.fetchTickets({
+      origin,
+      destination,
+      depart_date,
+      return_date,
+      currency,
+    });
+
+    console.log(locations.lastSearch);
   }
 });
