@@ -1,20 +1,19 @@
 function setParams(config) {
-  console.log(config);
+  // console.log(config);
   const params = config.params || {};
-  config.params = Object.assign(
-    params, {
+  config.params = Object.assign(params, {
     apikey: process.env.VUE_APP_API_KEY,
-    plot: "full"
+    plot: "full",
   });
 
   return config;
 }
 
-// function returnData(res) {
-//   return res.data;
-// }
+function returnData(res) {
+  return res.data;
+}
 
-export default function(axios) {
+export default function (axios) {
   axios.interceptors.request.use(setParams);
-  // axios.interceptors.response.use(returnData);
+  axios.interceptors.response.use(returnData);
 }
